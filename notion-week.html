@@ -4,13 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Even or odd week</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
-<body>
+<body class="text-center">
+    <h1 class="weekNumber"></h1>
+    <h2 class="weekType"></h2>
+
     <script>
 
+        currentDate = new Date();
+        startDate = new Date(currentDate.getFullYear(), 0, 1);
+        let days = Math.floor((currentDate - startDate) /
+            (24 * 60 * 60 * 1000));
+        
+        let weekNumber = Math.ceil(days / 7);
+
+        if (getParameterGet("lang") == "cs") {
+            let weekType = weekNumber % 2 == 0 ? '<span class="text-success">sudý</span>' : '<span class="text-success">lichý</span>';
+            document.querySelector('.weekNumber').innerHTML = "Týden Číslo: <strong>" + weekNumber + "</strong>";
+            document.querySelector('.weekType').innerHTML = "Typ Týdne: <strong>" + weekType + "</strong>";
+        } else {
+            let weekType = weekNumber % 2 == 0 ? '<span class="text-success">even</span>' : '<span class="text-success">odd</span>';
+            document.querySelector('.weekNumber').innerHTML = "Week Number: <strong>" + weekNumber + "</strong>";
+            document.querySelector('.weekType').innerHTML = "Week Type: <strong>" + weekType + "</strong>";
+        }
+
+        function getParameterGet(name) {
+            let url = new URL(window.location.href);
+            return url.searchParams.get(name);
+        }
     </script>
     <style>
-        
+        body {
+            background-color: #191919;
+            color: #fff;
+        }
     </style>
 </body>
 </html>
