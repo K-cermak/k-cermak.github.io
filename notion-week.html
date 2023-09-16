@@ -20,11 +20,11 @@
         let weekNumber = Math.ceil(days / 7);
 
         if (getParameterGet("lang") == "cs") {
-            let weekType = weekNumber % 2 == 0 ? '<span class="text-success">sudý</span>' : '<span class="text-success">lichý</span>';
+            let weekType = weekNumber % 2 == 0 ? '<span class="text-success">sudý</span>' : '<span class="text-danger">lichý</span>';
             document.querySelector('.weekNumber').innerHTML = "Týden Číslo: <strong>" + weekNumber + "</strong>";
             document.querySelector('.weekType').innerHTML = "Typ Týdne: <strong>" + weekType + "</strong>";
         } else {
-            let weekType = weekNumber % 2 == 0 ? '<span class="text-success">even</span>' : '<span class="text-success">odd</span>';
+            let weekType = weekNumber % 2 == 0 ? '<span class="text-success">even</span>' : '<span class="text-danger">odd</span>';
             document.querySelector('.weekNumber').innerHTML = "Week Number: <strong>" + weekNumber + "</strong>";
             document.querySelector('.weekType').innerHTML = "Week Type: <strong>" + weekType + "</strong>";
         }
